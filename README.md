@@ -37,7 +37,7 @@ conversion-optimized ad copy in seconds.
 1. **Clone the repository**
 
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/techwunderkind/shop-ai-ads
 cd vigoshop-ai-ad-generator
 ```
 
