@@ -6,13 +6,13 @@ const anthropic = new Anthropic({
 
 export async function POST(request) {
     try {
-        const { url } = await request.json();
+        const {url} = await request.json();
 
         if (!url || !url.includes('vigoshop.si')) {
             return Response.json({
                 success: false,
                 error: 'Prosimo vnesite veljavno Vigoshop.si povezavo'
-            }, { status: 400 });
+            }, {status: 400});
         }
 
         // Fetch the product page HTML
@@ -23,7 +23,7 @@ export async function POST(request) {
         const message = await anthropic.messages.create({
             model: 'claude-sonnet-4-20250514',
             max_tokens: 2000,
-            temperature: 0.3,
+            temperature: 0.9,
             messages: [
                 {
                     role: 'user',
@@ -74,6 +74,6 @@ Vrni JSON v tej obliki:
         return Response.json({
             success: false,
             error: 'Napaka pri pridobivanju podatkov. Prosimo preverite povezavo.'
-        }, { status: 500 });
+        }, {status: 500});
     }
 }

@@ -1,4 +1,4 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import {Geist, Geist_Mono} from "next/font/google";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -16,7 +16,7 @@ export const metadata = {
     description: "Generate professional Facebook ads with Claude AI",
 };
 
-export default function RootLayout({ children }) {
+export default function RootLayout({children}) {
     return (
         <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
         <body className="antialiased">

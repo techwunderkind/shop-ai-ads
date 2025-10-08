@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import {useState} from 'react';
 
 export default function Home() {
     const [formData, setFormData] = useState({
@@ -23,28 +23,28 @@ export default function Home() {
     // Sample products for quick testing
     const sampleProducts = [
         {
-            name: 'Zunanja brezžična kamera DIGICAM',
-            price: '33,99€',
-            features: 'Nočni vid, Dvosmerna komunikacija, WiFi povezava, Vodoodporna, HD kvaliteta',
-            targetAudience: 'Starši, lastniki domov, skrbniki varnosti',
-            painPoint: 'Skrbi za varnost doma in družine',
-            uniqueValue: 'Zaščitite svoj dom 24/7 z enostavno namestitvijo'
+            name: 'Brezžična varnostna kamera',
+            price: '29,99€',
+            features: 'Nočni vid, WiFi, Aplikacija, Vodoodporna, Full HD',
+            targetAudience: 'Starši z otroki, lastniki hiš',
+            painPoint: 'Skrb za varnost doma ko nisi tam',
+            uniqueValue: 'Vidiš dom v živo kadarkoli - enostavna namestitev brez strokovnjaka'
         },
         {
-            name: 'Trener za trebušne mišice SIXPACK',
+            name: 'EMS Trebuščni trener',
             price: '19,99€',
-            features: 'EMS tehnologija, Brezžični, 6 programov, USB polnjenje, Enostaven za uporabo',
-            targetAudience: 'Aktivni posamezniki 25-45 let, ki želijo fito postavo',
-            painPoint: 'Pomanjkanje časa za vadbo v fitnesu',
-            uniqueValue: 'Izoblikuj trebušček v udobju doma - brez znoja'
+            features: 'Električna stimulacija, 6 programov, USB polnjenje, Brezžičen',
+            targetAudience: 'Zaposleni 25-45 let brez časa za fitnes',
+            painPoint: 'Ni časa za fitnes ampak željo po fiti postavi',
+            uniqueValue: 'Trebuščki v 15 minutah na kavču - brez znoja'
         },
         {
-            name: 'Električni čistilec zob SMILY',
-            price: '19,99€',
-            features: 'Ultrazvočno čiščenje, Odstrani zobni kamen, 3 nastavki, USB polnjenje, Prenosljiv',
-            targetAudience: 'Ljudje, ki skrbijo za ustno higieno, 20-60 let',
-            painPoint: 'Dragi zobozdravstveni posegi',
-            uniqueValue: 'Profesionalno čiščenje doma za del cene'
+            name: 'Ultrazvočni čistilec zob',
+            price: '24,99€',
+            features: 'Odstrani zobni kamen, 3 nastavki, USB polnjenje, Tiho delovanje',
+            targetAudience: 'Ljudje ki skrbijo za zobe, 20-60 let',
+            painPoint: 'Draga zobna higiena pri zobozdravniku',
+            uniqueValue: 'Profesionalno čiščenje doma za 1/10 cene'
         }
     ];
 
@@ -56,7 +56,7 @@ export default function Home() {
     };
 
     const loadSample = (index) => {
-        setFormData({ ...sampleProducts[index], tone: formData.tone });
+        setFormData({...sampleProducts[index], tone: formData.tone});
         setError('');
     };
 
@@ -80,7 +80,7 @@ export default function Home() {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ url: productUrl })
+                body: JSON.stringify({url: productUrl})
             });
 
             const data = await response.json();
@@ -164,7 +164,7 @@ export default function Home() {
             `---\n\n`
         ).join('');
 
-        const blob = new Blob([content], { type: 'text/plain' });
+        const blob = new Blob([content], {type: 'text/plain'});
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
@@ -189,7 +189,8 @@ export default function Home() {
                     </p>
 
                     {/* URL Input Section */}
-                    <div className="mb-6 p-4 bg-gradient-to-r from-purple-50 to-indigo-50 rounded-xl border-2 border-purple-200">
+                    <div
+                        className="mb-6 p-4 bg-gradient-to-r from-purple-50 to-indigo-50 rounded-xl border-2 border-purple-200">
                         <label className="block text-sm font-semibold text-gray-700 mb-2 flex items-center gap-2">
                             <span>🔗</span>
                             Naloži podatke iz Vigoshop povezave
@@ -383,14 +384,16 @@ export default function Home() {
                             >
                                 <div className="flex justify-between items-start mb-4">
                                     <div className="flex-1">
-                    <span className="inline-block bg-gradient-to-r from-purple-100 to-indigo-100 text-purple-800 text-xs font-semibold px-3 py-1 rounded-full mb-3">
+                    <span
+                        className="inline-block bg-gradient-to-r from-purple-100 to-indigo-100 text-purple-800 text-xs font-semibold px-3 py-1 rounded-full mb-3">
                       {ad.type}
                     </span>
                                         <h3 className="text-xl font-bold text-gray-800 mb-1">
                                             {ad.headline}
                                         </h3>
                                         <p className={`text-xs font-medium ${getCharacterCountColor(ad.headline, 40)}`}>
-                                            {ad.headline?.length || 0}/40 znakov {ad.headline?.length > 40 && '⚠️ PREDOLGO'}
+                                            {ad.headline?.length || 0}/40
+                                            znakov {ad.headline?.length > 40 && '⚠️ PREDOLGO'}
                                         </p>
                                     </div>
                                     <button
@@ -422,13 +425,15 @@ export default function Home() {
 
                                 {ad.cta && (
                                     <div className="mb-3">
-                    <span className="inline-block bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold px-6 py-2 rounded-lg cursor-pointer transition">
+                    <span
+                        className="inline-block bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold px-6 py-2 rounded-lg cursor-pointer transition">
                       {ad.cta} →
                     </span>
                                     </div>
                                 )}
 
-                                <div className="text-sm text-gray-600 bg-purple-50 rounded-lg p-3 border-l-4 border-purple-300">
+                                <div
+                                    className="text-sm text-gray-600 bg-purple-50 rounded-lg p-3 border-l-4 border-purple-300">
                                     <strong className="text-purple-800">💡 Zakaj deluje:</strong> {ad.rationale}
                                 </div>
                             </div>
