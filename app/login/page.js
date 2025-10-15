@@ -28,7 +28,13 @@ export default function LoginPage() {
 
             if (data.success) {
                 // Force a hard refresh to ensure middleware picks up the cookie
-                window.location.href = '/';
+                console.log('Login successful, redirecting to:', window.location.origin + '/');
+                console.log('Current location:', window.location.href);
+                
+                // Add a small delay to ensure cookie is set before redirect
+                setTimeout(() => {
+                    window.location.href = '/';
+                }, 100);
             } else {
                 setError(data.error || 'Prijava ni uspela');
             }

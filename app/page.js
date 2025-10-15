@@ -1,6 +1,7 @@
 'use client';
 
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
+import { useRouter } from 'next/navigation';
 
 export default function Home() {
     const [formData, setFormData] = useState({
@@ -19,6 +20,7 @@ export default function Home() {
     const [copiedIndex, setCopiedIndex] = useState(null);
     const [productUrl, setProductUrl] = useState('');
     const [loadingUrl, setLoadingUrl] = useState(false);
+    const router = useRouter();
 
     // Sample products for quick testing
     const sampleProducts = [
@@ -172,6 +174,7 @@ export default function Home() {
         a.click();
         URL.revokeObjectURL(url);
     };
+
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-purple-50 via-blue-50 to-indigo-100 p-3 sm:p-4 lg:p-6">
