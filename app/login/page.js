@@ -27,8 +27,8 @@ export default function LoginPage() {
             const data = await response.json();
 
             if (data.success) {
-                router.push('/');
-                router.refresh();
+                // Force a hard refresh to ensure middleware picks up the cookie
+                window.location.href = '/';
             } else {
                 setError(data.error || 'Prijava ni uspela');
             }
@@ -40,19 +40,19 @@ export default function LoginPage() {
     };
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-purple-50 via-blue-50 to-indigo-100 flex items-center justify-center p-4">
-            <div className="bg-white rounded-2xl shadow-xl p-8 w-full max-w-md">
-                <div className="text-center mb-8">
-                    <span className="text-5xl mb-4 block">🔐</span>
-                    <h1 className="text-3xl font-bold text-gray-800 mb-2">
+        <div className="min-h-screen bg-gradient-to-br from-purple-50 via-blue-50 to-indigo-100 flex items-center justify-center p-3 sm:p-4">
+            <div className="bg-white rounded-2xl shadow-xl p-6 sm:p-8 w-full max-w-md">
+                <div className="text-center mb-6 sm:mb-8">
+                    <span className="text-4xl sm:text-5xl mb-3 sm:mb-4 block">🔒</span>
+                    <h1 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-2">
                         Vigoshop AI Ad Generator
                     </h1>
-                    <p className="text-gray-600">
+                    <p className="text-sm sm:text-base text-gray-600">
                         Prijavite se za dostop
                     </p>
                 </div>
 
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
                     <div>
                         <label className="block text-sm font-semibold text-gray-700 mb-2">
                             Uporabniško ime
@@ -61,9 +61,10 @@ export default function LoginPage() {
                             type="text"
                             value={username}
                             onChange={(e) => setUsername(e.target.value)}
-                            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                            className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent text-sm sm:text-base"
                             placeholder="Vnesite uporabniško ime"
                             required
+                            autoComplete="username"
                         />
                     </div>
 
@@ -75,23 +76,24 @@ export default function LoginPage() {
                             type="password"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
-                            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                            className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent text-sm sm:text-base"
                             placeholder="Vnesite geslo"
                             required
+                            autoComplete="current-password"
                         />
                     </div>
 
                     {error && (
-                        <div className="p-4 bg-red-50 border border-red-200 rounded-lg flex items-start gap-2">
-                            <span className="text-red-600">⚠️</span>
-                            <p className="text-red-700">{error}</p>
+                        <div className="p-3 sm:p-4 bg-red-50 border border-red-200 rounded-lg flex items-start gap-2">
+                            <span className="text-red-600 flex-shrink-0">⚠️</span>
+                            <p className="text-red-700 text-sm sm:text-base break-words">{error}</p>
                         </div>
                     )}
 
                     <button
                         type="submit"
                         disabled={loading}
-                        className="w-full bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 disabled:from-gray-400 disabled:to-gray-500 text-white font-bold py-3 px-6 rounded-lg transition duration-200 flex items-center justify-center gap-2"
+                        className="w-full bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 disabled:from-gray-400 disabled:to-gray-500 text-white font-bold py-2.5 sm:py-3 px-4 sm:px-6 rounded-lg transition duration-200 flex items-center justify-center gap-2 text-sm sm:text-base"
                     >
                         {loading ? (
                             <>
