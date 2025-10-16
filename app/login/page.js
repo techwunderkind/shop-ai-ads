@@ -46,74 +46,86 @@ export default function LoginPage() {
     };
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-purple-50 via-blue-50 to-indigo-100 flex items-center justify-center p-3 sm:p-4">
-            <div className="bg-white rounded-2xl shadow-xl p-6 sm:p-8 w-full max-w-md">
-                <div className="text-center mb-6 sm:mb-8">
-                    <span className="text-4xl sm:text-5xl mb-3 sm:mb-4 block">🔒</span>
-                    <h1 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-2">
-                        Vigoshop AI Ad Generator
-                    </h1>
-                    <p className="text-sm sm:text-base text-gray-600">
-                        Prijavite se za dostop
-                    </p>
-                </div>
-
-                <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
-                    <div>
-                        <label className="block text-sm font-semibold text-gray-700 mb-2">
-                            Uporabniško ime
-                        </label>
-                        <input
-                            type="text"
-                            value={username}
-                            onChange={(e) => setUsername(e.target.value)}
-                            className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent text-sm sm:text-base"
-                            placeholder="Vnesite uporabniško ime"
-                            required
-                            autoComplete="username"
-                        />
-                    </div>
-
-                    <div>
-                        <label className="block text-sm font-semibold text-gray-700 mb-2">
-                            Geslo
-                        </label>
-                        <input
-                            type="password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent text-sm sm:text-base"
-                            placeholder="Vnesite geslo"
-                            required
-                            autoComplete="current-password"
-                        />
-                    </div>
-
-                    {error && (
-                        <div className="p-3 sm:p-4 bg-red-50 border border-red-200 rounded-lg flex items-start gap-2">
-                            <span className="text-red-600 flex-shrink-0">⚠️</span>
-                            <p className="text-red-700 text-sm sm:text-base break-words">{error}</p>
+        <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 relative overflow-hidden flex items-center justify-center p-3 sm:p-4">
+            {/* Background decoration */}
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-400/10 via-purple-400/10 to-pink-400/10"></div>
+            <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-blue-400/20 to-purple-400/20 rounded-full blur-3xl"></div>
+            <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-gradient-to-r from-purple-400/20 to-pink-400/20 rounded-full blur-3xl"></div>
+            
+            <div className="relative z-10 w-full max-w-md">
+                <div className="glass-effect rounded-3xl shadow-modern p-6 sm:p-8 w-full">
+                    <div className="text-center mb-8">
+                        <div className="relative mb-6">
+                            <span className="text-5xl sm:text-6xl animate-pulse-glow block">🔒</span>
+                            <div className="absolute inset-0 text-5xl sm:text-6xl blur-sm opacity-30">🔒</div>
                         </div>
-                    )}
+                        <h1 className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent mb-3">
+                            Vigoshop AI Ad Generator
+                        </h1>
+                        <p className="text-base sm:text-lg text-gray-600">
+                            Varno se prijavite za dostop do AI orodja
+                        </p>
+                    </div>
 
-                    <button
-                        type="submit"
-                        disabled={loading}
-                        className="w-full bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 disabled:from-gray-400 disabled:to-gray-500 text-white font-bold py-2.5 sm:py-3 px-4 sm:px-6 rounded-lg transition duration-200 flex items-center justify-center gap-2 text-sm sm:text-base"
-                    >
-                        {loading ? (
-                            <>
-                                <span className="animate-spin">⏳</span>
-                                Prijavljanje...
-                            </>
-                        ) : (
-                            <>
-                                <span>🔓</span>
-                                Prijava
-                            </>
+                    <form onSubmit={handleSubmit} className="space-y-6">
+                        <div className="space-y-2">
+                            <label className="block text-sm font-semibold text-gray-700 mb-2 flex items-center gap-2">
+                                <span className="text-indigo-600">👤</span>
+                                <span>Uporabniško ime</span>
+                            </label>
+                            <input
+                                type="text"
+                                value={username}
+                                onChange={(e) => setUsername(e.target.value)}
+                                className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent bg-white/80 backdrop-blur-sm text-base transition-modern focus-modern shadow-sm"
+                                placeholder="Vnesite uporabniško ime"
+                                required
+                                autoComplete="username"
+                            />
+                        </div>
+
+                        <div className="space-y-2">
+                            <label className="block text-sm font-semibold text-gray-700 mb-2 flex items-center gap-2">
+                                <span className="text-red-600">🔐</span>
+                                <span>Geslo</span>
+                            </label>
+                            <input
+                                type="password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent bg-white/80 backdrop-blur-sm text-base transition-modern focus-modern shadow-sm"
+                                placeholder="Vnesite geslo"
+                                required
+                                autoComplete="current-password"
+                            />
+                        </div>
+
+                        {error && (
+                            <div className="p-4 bg-gradient-to-r from-red-50 to-pink-50 border border-red-200 rounded-xl flex items-start gap-3 shadow-lg">
+                                <span className="text-red-600 text-lg flex-shrink-0">⚠️</span>
+                                <p className="text-red-700 text-base break-words">{error}</p>
+                            </div>
                         )}
-                    </button>
-                </form>
+
+                        <button
+                            type="submit"
+                            disabled={loading}
+                            className="w-full bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 hover:from-indigo-700 hover:via-purple-700 hover:to-pink-700 disabled:from-gray-400 disabled:via-gray-500 disabled:to-gray-600 text-white font-bold py-4 px-6 rounded-2xl transition-modern shadow-lg hover:shadow-xl hover:shadow-indigo-500/25 disabled:shadow-none flex items-center justify-center gap-3 text-base group"
+                        >
+                            {loading ? (
+                                <>
+                                    <span className="animate-spin text-xl">⏳</span>
+                                    <span>Prijavljanje...</span>
+                                </>
+                            ) : (
+                                <>
+                                    <span className="text-xl group-hover:scale-110 transition-transform">🔓</span>
+                                    <span>Prijava</span>
+                                </>
+                            )}
+                        </button>
+                    </form>
+                </div>
             </div>
         </div>
     );

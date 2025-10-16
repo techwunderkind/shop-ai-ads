@@ -29,12 +29,12 @@ export async function POST(request) {
                 message: 'Login successful'
             });
 
-            // Set authentication cookie (expires in 7 days)
+            // Set authentication cookie (expires in 1 hour)
             response.cookies.set('auth', 'authenticated', {
                 httpOnly: true,
                 secure: process.env.NODE_ENV === 'production',
                 sameSite: 'lax',
-                maxAge: 60 * 60 * 24 * 7, // 7 days
+                maxAge: 60 * 60, // 1 hour
                 path: '/', // Ensure cookie is available for all paths
                 // Don't set domain to avoid localhost issues
             });
