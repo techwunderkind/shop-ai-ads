@@ -29,9 +29,9 @@ graph TD
     A --> A1[React Components]
     A --> A2[Tailwind CSS UI]
     
-    B --> B1[/api/auth - login]
-    B --> B2[/api/scrape - data load]
-    B --> B3[/api/generate - AI ads]
+    B --> B1["api/auth - login"]
+    B --> B2["api/scrape - data load"]
+    B --> B3["api/generate - AI ads"]
     
     C --> C1[claude-sonnet-4 model]
 ```
